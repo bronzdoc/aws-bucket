@@ -25,7 +25,7 @@ func (s3 *S3) ListBuckets() {
 	resp, err := s3.sdk.ListBuckets(params)
 
 	if err != nil {
-		log.Println(err.Error())
+		log.Println("ListBuckets() -", err.Error())
 		return
 	}
 
