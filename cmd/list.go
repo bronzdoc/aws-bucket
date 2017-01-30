@@ -5,10 +5,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var sortBy string
+
 var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "List AWS buckets",
 	Run: func(cmd *cobra.Command, args []string) {
+
 		s3 := s3.New()
 		s3.ListBuckets()
 	},
@@ -25,6 +28,19 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// listCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
+	listCmd.Flags().StringVarP(
+		&sortBy,
+		"sort",
+		"s",
+		"",
+		`
+	- dateCreated
+	- dateModified
+	- alphaAsc
+	- alphaDesc
+
+	Example: bucket list --sort dateCreated
+		`,
+	)
 }

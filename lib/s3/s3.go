@@ -30,7 +30,7 @@ func (s3 *S3) ListBuckets() {
 		return
 	}
 
-	fmt.Println(resp)
+	fmt.Println(resp.Buckets)
 }
 
 func (s3 *S3) ShowBucketObjects(bucketName string) {
@@ -45,5 +45,5 @@ func (s3 *S3) ShowBucketObjects(bucketName string) {
 		return
 	}
 
-	fmt.Println(resp)
+	fmt.Println(resp.Contents)
 }
